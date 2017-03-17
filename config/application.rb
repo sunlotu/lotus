@@ -11,5 +11,15 @@ module Lotus
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.generators do |g|
+      g.helper = false
+      g.assets = false
+      g.test_framework = false
+    end
+
+    # autoload_paths 生产环境不执行autoloading
+    config.autoload_paths += [ Rails.root.join('lib') ]
+    config.eager_load_paths += [ Rails.root.join('lib') ]
+
   end
 end

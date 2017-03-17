@@ -1,3 +1,16 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'account#index'
+  devise_for :users
+  resources :account, only: [:index]
+  resources :posts, only: [:index, :create, :destroy]
+
+  get 'account', to: 'account#index'
+
+  namespace :api, defaults: { format: :json } do
+    namespace :posts do
+      get 'download'
+    end
+  end
+
+  mount RuCaptcha::Engine => '/captcha'
 end

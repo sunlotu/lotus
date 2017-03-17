@@ -1,14 +1,33 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Lotus</title>
+    <meta charset="utf-8" />
+    <meta content="True" name="Lotus">
+    <title><%= content_for?(:title) ? yield(:title) : 'Lotus' %></title>
     <%= csrf_meta_tags %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
-    <%= yield %>
+    <div class="header">
+      <nav class="navbar navbar-fixed-top navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <%= link_to 'Lotus', nil, class: 'navbar-brand' %>
+          </div>
+          <div class="collpase navbar-collpase">
+            <%= render "layouts/navbar" %>
+            <%= render "layouts/userbar" %>
+          </div>
+        </div>
+      </nav>
+    </div>
+    <div class="container">
+      <div class="row">
+        <%= render 'layouts/flash' %>
+        <%= yield %>
+      </div>
+    </div>
   </body>
 </html>

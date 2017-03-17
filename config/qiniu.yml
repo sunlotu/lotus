@@ -1,0 +1,13 @@
+# qiniu配置
+default: &default
+  access_key: _xy5HTOKzekps2BcVtzpwxG1j5luyOvc-B7_vV4T
+  secret_key: mYbl4I5OgapOOJzpWIysJ0bNl5kgm5p8ru3k9ode
+
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default

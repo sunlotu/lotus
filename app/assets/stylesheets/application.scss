@@ -1,0 +1,49 @@
+/*
+ *= require_tree .
+ *= require_self
+ */
+
+@import "bootstrap.min";
+@import "lightbox/lightbox.min";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "toastr/toastr";
+
+body {
+  background: #e9eaed;
+  letter-spacing: .03em;
+  padding-top: 65px;
+}
+
+.navbar-default .navbar-nav.navbar-meun >li > a:hover,
+.navbar-default .navbar-nav.navbar-meun >li.active > a,
+.navbar-default .navbar-nav.navbar-meun >li.active > a:hover { color: #ec971f; background-color: #f9f9f9; border-bottom: solid 3px #ec971f }
+
+.panel-default { border: solid 1px #f5f5f5 }
+.panel-default .panel-heading { padding: 6px 10px; color: #9d9d9d; background-color: #f9f9f9; border: solid 1px #f5f5f5 }
+
+.container-box { background-color: #ffffff; border-radius: 4px; }
+.captcha { width: 120px; height: 42px; }
+
+// 上传及展示
+.dz-preview-template { display: none; }
+.dz-message { text-align: center; margin: 10px 0 0 0; padding: 30px 30px; border: dashed 1px #9d9d9d; }
+.progress-xs { height: 3px; }
+.post-images { margin-top: 20px; z-index: 100; }
+.imgbox { position: relative; display: block; margin: 0 2px 2px 0; float: left; }
+.imgbox .operation { margin-top: -18px;  }
+.operation > a { float: right; display: inline-block; }
+.operation > a:hover { text-decoration: none; }
+.trash, .download { display: none; }
+.imgbox:hover .operation { // 渐变色
+  height: 18px;
+  padding: 2px 6px 2px 0;
+  background: -webkit-linear-gradient(gainsboro, dimgrey);
+  background: -o-linear-gradient(gainsboro, dimgrey);
+  background: -moz-linear-gradient(gainsboro, dimgrey);
+  background: linear-gradient(gainsboro, dimgrey);
+}
+.imgbox:hover .operation .trash { display: block; color: #843534; }
+.imgbox:hover .operation .trash:hover { color: #ac2925; }
+.imgbox:hover .operation .download { display: block; margin-right: 5px; color: #286090; }
+.imgbox:hover .operation .download:hover { color: #337ab7; }

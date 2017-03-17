@@ -8,14 +8,21 @@ end
 gem 'rails', '~> 5.0.1'
 gem 'mysql2'
 gem 'puma', '~> 3.0'
+# scss
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
-
+gem 'font-awesome-sass'
 gem 'devise'
+gem 'rucaptcha'
+
+# 云存储
+gem 'qiniu'
+gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
