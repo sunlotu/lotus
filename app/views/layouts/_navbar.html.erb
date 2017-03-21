@@ -1,4 +1,26 @@
+<!--
 <%= render_list class: 'nav navbar-nav navbar-meun' do |li|
-  li << link_to('用户', account_path)
+  li << link_to('用户管理', account_path)
+  li << link_to('角色管理', roles_path)
   li << link_to('文件', posts_path)
 end %>
+-->
+<ul class="nav navbar-nav navbar-meun">
+  <%= nav_tag(controller: %w(account roles)) do %>
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+      用户管理
+      <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+      <%= nav_tag(controller: 'account') do %>
+        <%= link_to '用户管理', account_path %>
+      <% end %>
+      <%= nav_tag(controller: 'roles') do %>
+        <%= link_to '角色管理', roles_path %>
+      <% end %>
+    </ul>
+  <% end %>
+  <%= nav_tag(controller: 'posts') do %>
+    <%= link_to '文件', posts_path %>
+  <% end %>
+</ul>

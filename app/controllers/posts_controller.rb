@@ -17,11 +17,11 @@ class PostsController < ApplicationController
     fpath, filename = file.path, file.original_filename
     post = Post.find_by_filename(filename)
     render json: { success: false, message: '此文件已存在！' } and return if post
-    result = QiniuService.new(fpath,filename).upload
+    # result = QiniuService.new(fpath,filename).upload
     if result[:success]
       @post = Post.new
       @post.filename = filename
-      @post.qiniu_hash = result[:data]['key']
+      # @post.qiniu_hash = result[:data]['key']
       respond_to do |format|
         if @post.save
           format.html { redirect_to @post, notice: '上传成功!' }

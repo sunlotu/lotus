@@ -21,5 +21,11 @@ module Lotus
     config.autoload_paths += [ Rails.root.join('lib') ]
     config.eager_load_paths += [ Rails.root.join('lib') ]
 
+    %w( qiniu redis ).each do |item|
+      config.send(:"#{item}=", config_for(item).deep_symbolize_keys)
+    end
+
+    config.cache_store = :redis_store, config.redis
+
   end
 end

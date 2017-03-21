@@ -17,12 +17,18 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'font-awesome-sass'
 gem 'devise'
+gem 'devise-async'
 gem 'rucaptcha'
+
+# redis
+gem 'redis-namespace'
+gem 'redis-rails'
 
 # 云存储
 gem 'qiniu'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
+gem 'sidekiq'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -33,6 +39,7 @@ gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
 group :development, :test do
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
 end
 
 group :development do

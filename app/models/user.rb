@@ -18,6 +18,8 @@ class User < ApplicationRecord
   attr_accessor :login
   validates :name, presence: true, uniqueness: true
 
+  has_many :role_ships
+  has_many :roles, through: :role_ships
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup
