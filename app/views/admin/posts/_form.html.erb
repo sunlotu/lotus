@@ -1,0 +1,23 @@
+  <%= form_for [:admin,@post], html: { data:{ provider: 'dropzone' }, multipart: true } do |f| %>
+    <%= file_field_tag :file, class: 'hidden', multiple: true %>
+      <div class="dz-message">
+        <span>
+         选取或者拖拽图片到这上传
+        </span>
+      </div>
+      <div class="dz-preview-template">
+        <div class="dz-preview dz-file-preview">
+          <!--<div class="dz-details">-->
+            <!--<div class="dz-filename"><span data-dz-name></span></div>-->
+            <!--<div class="dz-size" data-dz-size></div>-->
+            <!--<img data-dz-thumbnail />-->
+          <!--</div>-->
+          <div class="dz-progress">
+            <div class="progress progress-xs" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+              <div class="progress-bar progress-bar-success" data-dz-uploadprogress style="width: 0%;"></div>
+            </div>
+          </div>
+          <div class="dz-error-message"><span data-dz-errormessage></span></div>
+        </div>
+      </div>
+  <% end %>

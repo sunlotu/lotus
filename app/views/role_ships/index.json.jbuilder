@@ -1,1 +1,0 @@
-json.array! @role_ships, partial: 'role_ships/role_ship', as: :role_ship

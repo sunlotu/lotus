@@ -1,0 +1,28 @@
+<%= title_tag '用户管理' %>
+<%= panel_tag 'yes' %>
+<div class="table table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>邮箱</th>
+        <th>角色</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %> </td>
+        <td><%= user.email %></td>
+        <td><%= user.roles_name.join(',') %></td>
+        <td>
+          <%= link_to edit_admin_account_path(user) do %>
+            <i class="fa fa-edit"></i>编辑
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+</div>

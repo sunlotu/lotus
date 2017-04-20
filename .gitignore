@@ -8,13 +8,16 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
-/tmp/*
+log/*.log*
+tmp/*
 !/log/.keep
 !/tmp/.keep
 .idea
 .DS_Store
-/config/qiniu.yml
+config/qiniu.yml
+config/database.yml
+.env
+.ruby-version
 
 # Ignore Byebug command history file.
 .byebug_history

@@ -7,11 +7,11 @@ RSpec.describe "Posts", type: :request do
   #     expect(response).to have_http_status(200)
   #   end
   # end
-
-  describe "pages" do
-    it "edit page" do
-      get posts_index_path
-      expect(page).to have_content('Editing Post')
-    end
-  end
+  #
+  # describe "pages" do
+  #   it "edit page" do
+  #     get posts_index_path
+  #     expect(page).to have_content('Editing Post')
+  #   end
+  # end
 end

@@ -8,18 +8,23 @@ class User < ApplicationRecord
   # :confirmable　注册后邮箱验证
   # :omniauthable 三方平台 OAuth 验证登录
   # :timeoutable
-  ACCESSABLE_ATTRS = [:name, :email, :password, :password_confirmation, :remember_me]
-
-
-  devise :database_authenticatable, :registerable, :lockable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable,
+         :async,
          :authentication_keys => [:login]
 
-  attr_accessor :login
+  attr_accessor :login, :password_confirmation
+
+  # enum status: [:online, :offline]
+  enum status: { online: 0, offline: 1 }
+  ACCESSABLE_ATTRS = [:name, :email,  :current_password, :password, :password_confirmation, :remember_me, :role_ids=>[] ]
+
   validates :name, presence: true, uniqueness: true
 
   has_many :role_ships
   has_many :roles, through: :role_ships
+
+  include Roleable
 
   def self.find_for_database_authentication(warden_conditions)
     conditions = warden_conditions.dup

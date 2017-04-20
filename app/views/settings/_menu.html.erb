@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <ul class="nav nav-pills nav-stacked">
+    <%= nav_tag(controller: %w(settings), action: %w(profile)) do %>
+      <%= link_to profile_setting_path do %>
+        <i class="fa fa-address-card-o"></i> 详细资料
+      <% end %>
+    <% end %>
+    <%= nav_tag(controller: %w(settings), action: %w(password)) do %>
+      <%= link_to password_setting_path do %>
+          <i class="fa fa-key"></i> 修改密码
+      <% end %>
+    <% end %>
+  </ul>
+</div>

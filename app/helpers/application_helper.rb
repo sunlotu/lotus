@@ -16,32 +16,34 @@ module ApplicationHelper
     content_for :title, raw("#{str}")
   end
 
-  def render_list(opts = {})
-    list = []
-    yield(list)
-    items = []
-    list.each do |link|
-      item_class = EMPTY_STRING
-      urls = link.match(/href=(["'])(.*?)(\1)/) || []
-      url = urls.length > 2 ? urls[2] : nil
-      if url && current_page?(url) || (@current && @current.include?(url))
-        item_class = 'active'
-      end
-      items << content_tag('li', raw(link), class: item_class)
-    end
-    content_tag('ul', raw(items.join(EMPTY_STRING)), opts)
+  def panel_tag(str)
+    content_for :panel, raw("#{str}")
   end
 
-  def curr_ctrl?(ctrl)
-    ctrl.to_s.underscore == controller_path || controller_path.include?(ctrl)
+  def panel_container(&block)
+    content_tag(:div, content_tag(:div, capture(&block), class: 'panel-body'), class: 'panel panel-default')
+  end
+
+  def main_container(block)
+    content_for?(:panel) ? panel_container { block } : block
+  end
+
+  # current_page?
+  def current_controller?(*ctrls)
+    ctrls.flatten.compact.any?{ |ctrl| ctrl.to_s.underscore == (controller_path || controller_path.pluralize)  }
+  end
+
+  def current_action?(*acts)
+    acts.flatten.compact.any?{ |act| act.to_s == action_name }
   end
 
   def active_tag?(opts={})
-    controller = opts.delete :controller
-    if controller.is_a? Array
-      controller.flatten.compact.any?{ |ctrl| curr_ctrl?(ctrl) }
+    ctrls = opts.delete :controller
+    acts = opts.delete :action
+    if ctrls && acts
+      current_controller?(ctrls) && current_action?(acts)
     else
-      curr_ctrl?(controller)
+      current_controller?(ctrls) || current_action?(acts)
     end
   end
 
@@ -51,7 +53,6 @@ module ApplicationHelper
     html_options[:class] << 'active' if active_tag?(opts)
     content_tag :li, capture(&block), html_options
   end
-
 
   def qiniu_image_url(post, format= :raw)
     key = post.respond_to?(:qiniu_hash) ? post.qiniu_hash : post
@@ -66,6 +67,10 @@ module ApplicationHelper
     else
       url
     end
+  end
+
+  def roles_options(select=nil)
+    options_for_select(Role.all.collect { |p| [p.name, p.id] }, select)
   end
 
 end

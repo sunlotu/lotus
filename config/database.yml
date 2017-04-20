@@ -1,9 +1,10 @@
 default: &default
+  encoding: utf8
   adapter: mysql2
   username: root
   password: root
   host: localhost
-  port: 3000
+  port: 3306
 
 development:
   <<: *default

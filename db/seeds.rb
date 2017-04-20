@@ -6,4 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-  User.create([{ name: '123', email: '123@qq.com'}, { name: 'test', email: 'test@qq.com' }])
+  users = User.create([{ name: 'admin', password: '123123', email: 'admin@qq.com', status: User.statuses[:online] },
+  { name: 'test', password: '123123',email: 'test@qq.com', status: User.statuses[:offline] }])
+  roles = Role.create([{code: 'admin', name: '管理员'}, {code: 'user', name: '普通用户'}])
+  role_ship = RoleShip.create(user_id: users.first.id, role_id: roles.first.id)

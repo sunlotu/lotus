@@ -10,6 +10,9 @@ module Lotus
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
+
+    config.time_zone = 'Beijing'
+
     # -- all .rb files in that directory are automatically loaded.
     config.generators do |g|
       g.helper = false
@@ -24,6 +27,7 @@ module Lotus
     %w( qiniu redis ).each do |item|
       config.send(:"#{item}=", config_for(item).deep_symbolize_keys)
     end
+
 
     config.cache_store = :redis_store, config.redis
 

@@ -1,6 +1,6 @@
 class Api::PostsController < Api::BaseController
   def download
-    @post = Post.find(params[:post_id])
+    @post = Post.find(params[:pid])
     key = @post.qiniu_hash
     filename = @post.filename
     result = QiniuService.new(key).download

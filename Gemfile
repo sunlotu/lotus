@@ -1,13 +1,12 @@
 source 'https://gems.ruby-china.org'
 
-git_source(:github) do |repo_name|
-  repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
-  "https://github.com/#{repo_name}.git"
-end
+# git_source(:github) do |repo_name|
+#   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
+#   "https://github.com/#{repo_name}.git"
+# end
 
 gem 'rails', '~> 5.0.1'
 gem 'mysql2'
-gem 'puma', '~> 3.0'
 # scss
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -16,6 +15,8 @@ gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'font-awesome-sass'
+gem 'data-confirm-modal'
+
 gem 'devise'
 gem 'devise-async'
 gem 'rucaptcha'
@@ -28,7 +29,10 @@ gem 'redis-rails'
 gem 'qiniu'
 gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
 
+gem 'puma', '~> 3.0'
 gem 'sidekiq'
+gem 'foreman'
+gem 'dotenv'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -40,6 +44,7 @@ gem 'sidekiq'
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
 group :development do

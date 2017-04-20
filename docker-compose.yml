@@ -1,0 +1,29 @@
+version: '2'
+services:
+  app:
+    build: .
+    command: bundle exec puma -C config/puma.rb
+    volumes:
+      - .:/var/www/lotus
+    links:
+      - db
+    expose:
+      - 3000
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile-nginx
+      links:
+        - app
+      ports:
+        - 80:80
+  db:
+    image: mysql
+    ports:
+      - 3306
+    volumes:
+      - data:/var/lib/mysql/data
+    env_file:
+      - .env
+volumes:
+  data:

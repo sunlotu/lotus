@@ -42,7 +42,7 @@ RSpec.configure do |config|
   # You can disable this behaviour by removing the line below, and instead
   # explicitly tag your specs with their type, e.g.:
   #
-  #     RSpec.describe UsersController, :type => :controller do
+  #     RSpec.describe AccountController, :type => :controller do
   #       # ...
   #     end
   #
@@ -54,4 +54,9 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  config.include Devise::Test::ControllerHelpers, type: :controller
+  config.include FactoryGirl::Syntax::Methods
+  config.include RSpec::Rails::RequestExampleGroup, type: :request, file_path: %r{spec/api}
+
 end

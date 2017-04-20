@@ -2,14 +2,14 @@
   <% @posts.each do |post| %>
     <div class="imgbox">
       <%= link_to qiniu_image_url(post, :raw), data: { lightbox: 'roadtrip' }, title: post.filename do %>
-        <%= image_tag(qiniu_image_url(post, :square),size: '130', alt: post.filename) %>
+          <%= image_tag(qiniu_image_url(post, :square),size: '130', alt: post.filename, class: 'img-thumbnail') %>
       <% end %>
       <div class="operation">
         <%= link_to post_path(post), method: :DELETE, data: { confirm: '确定删除图片吗？' } do %>
-          <i class="fa fa-trash trash"></i>
+            <i class="fa fa-trash trash"></i>
         <% end %>
         <%= link_to 'javascript:;', data: { proc: post.id, behaivor: 'lb-download' } do %>
-          <i class="fa fa-download download"></i>
+            <i class="fa fa-download download"></i>
         <% end %>
       </div>
     </div>
