@@ -1,4 +1,8 @@
 <ul class="nav navbar-nav navbar-meun">
+  <%= nav_tag(controller: 'dashboard') do %>
+    <%= link_to 'Dashboard', dashboard_path %>
+  <% end %>
+
   <% if current_user  %>
     <%= nav_tag(controller: %w(admin/account admin/roles)) do %>
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  root to: 'posts#index'
+  root to: 'dashboard#index'
   devise_for :users, controllers: { confirmations: 'confirmations' }
+
+  get 'dashboard', to: 'dashboard#index'
 
   resource :setting, only: [:show, :update] do
     member do
@@ -13,7 +15,6 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :create, :destroy]
 
   namespace :admin do
-    root to: 'posts#index'
     resources :account
     resources :roles, except: [:new, :show]
     resources :posts, only: [:index, :create, :destroy]
