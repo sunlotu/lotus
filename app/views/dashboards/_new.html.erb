@@ -1,0 +1,13 @@
+<%= form_for @dashboard, html: { class: 'form-horizontal' } do |f| %>
+  <div class="form-group">
+    <div class="col-md-9">
+      <%= f.text_area :body, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-md-9">
+      <%= f.submit 'save', class: 'btn btn-primary' %>
+    </div>
+  </div>
+<% end %>

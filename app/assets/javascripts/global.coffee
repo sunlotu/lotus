@@ -3,3 +3,8 @@ $(document).on 'page:change', ->
     title: '提示'
     commit: '确定'
     cancel: '取消'
+
+
+
+#$ ->
+#  $('[data-toggle=tooltip]').tooltip()

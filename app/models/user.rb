@@ -19,7 +19,8 @@ class User < ApplicationRecord
   enum status: { online: 0, offline: 1 }
   ACCESSABLE_ATTRS = [:name, :email,  :current_password, :password, :password_confirmation, :remember_me, :role_ids=>[] ]
 
-  validates :name, presence: true, uniqueness: true
+  validates_presence_of :email, :name
+  validates :email, format: { with: /\A([-a-z0-9+._]){1,64}@([-a-z0-9]+[.])+[a-z]{2,}\z/}
 
   has_many :role_ships
   has_many :roles, through: :role_ships
@@ -34,5 +35,4 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
-
 end

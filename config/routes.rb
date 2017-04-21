@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
 
-  root to: 'dashboard#index'
+  root to: 'dashboards#index'
   devise_for :users, controllers: { confirmations: 'confirmations' }
 
-  get 'dashboard', to: 'dashboard#index'
+  get 'dashboards', to: 'dashboards#index'
+
+  resources :dashboards
 
   resource :setting, only: [:show, :update] do
     member do
