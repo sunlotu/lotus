@@ -16,7 +16,7 @@ Devise.setup do |config|
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
-  config.mailer = 'Devise::Async::Proxy'
+  # config.mailer = 'Devise::Async::Proxy'
 
   # Configure the parent class responsible to send e-mails.
   # config.parent_mailer = 'ActionMailer::Base'
@@ -112,7 +112,7 @@ Devise.setup do |config|
   # config.pepper = 'e7ca3c2214012624ae7a59e5864ef992350561e416c2d4db19152ae789831a96228d12409201fd3c412fbe298be05a0f67b99cf079ba4d8250bdad1e0ecfb023'
 
   # Send a notification email when the user's password is changed
-  # config.send_password_change_notification = false
+  config.send_password_change_notification = true
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without

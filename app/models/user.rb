@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
   attr_accessor :login, :password_confirmation
 
+  after_update :send_password_change_email, if: :needs_password_change_email?
+
   # enum status: [:online, :offline]
   enum status: { online: 0, offline: 1 }
   ACCESSABLE_ATTRS = [:name, :email,  :current_password, :password, :password_confirmation, :remember_me, :role_ids=>[] ]
@@ -35,4 +37,15 @@ class User < ApplicationRecord
       where(conditions.to_h).first
     end
   end
+
+  private
+
+  def needs_password_change_email?
+    encrypted_password_changed? && persisted?
+  end
+
+  def send_password_change_email
+    UserMailer.password_changed(self.id).deliver_later
+  end
+
 end
