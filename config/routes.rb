@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :posts do
       get 'download'
+      get 'statistics'
     end
   end
 

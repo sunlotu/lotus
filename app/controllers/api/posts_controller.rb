@@ -7,4 +7,9 @@ class Api::PostsController < Api::BaseController
     img_data = open(result[:download_url])
     send_data img_data.read, type: img_data.content_type, filename: filename
   end
+
+  def statistics
+    @posts = Post.all
+    render json: { data: @posts }
+  end
 end

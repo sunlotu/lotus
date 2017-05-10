@@ -38,3 +38,11 @@ $(document).on 'turbolinks:load', ->
   $('[data-behaivor=lb-download]').on 'click', (e) ->
     postId = $(this).data('proc')
     document.location.href = "/api/posts/download?pid=#{postId}"
+
+
+  # posts list
+  $(document).on 'ajax:success', '#statistics-form', (event,data,status,xhr) ->
+    htmlStr = ''
+    for row in data.data
+      htmlStr += "<tr><td>#{row.title || ''}</td><td>#{row.filename}</td><td>#{row.qiniu_hash}</td><td>#{row.created_at}</td></tr>"
+    $('.table-posts > tbody').html(htmlStr)

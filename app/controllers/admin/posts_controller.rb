@@ -12,51 +12,47 @@ class Admin::PostsController < Admin::BaseController
   #   end
   # end
 
-  # def create
-  #   file = params[:file]
-  #   fpath, filename = file.path, file.original_filename
-  #   post = Post.find_by_filename(filename)
-  #   render json: { success: false, message: '此文件已存在！' } and return if post
-  #   result = QiniuService.new(fpath,filename).upload
-  #   if result[:success]
-  #     @post = Post.new
-  #     @post.filename = filename
-  #     @post.qiniu_hash = result[:data]['key']
-  #     respond_to do |format|
-  #       if @post.save
-  #         format.html { redirect_to @post, notice: '上传成功!' }
-  #         format.json { render json: PostSerializer.new(@post), status: :created }
-  #       else
-  #         format.html { render :index }
-  #         format.json { render json: @post.errors, status: :unprocessable_entity }
-  #       end
-  #     end
-  #   end
-  # end
-
-
-
   def create
     file = params[:file]
     fpath, filename = file.path, file.original_filename
     post = Post.find_by_filename(filename)
     render json: { success: false, message: '此文件已存在！' } and return if post
-    @post = Post.new
-    @post.filename = filename
-    @post.qiniu_hash = 'FnxFlLV8a7hjZOB9a6RMX1xwuQFL'
-    redirect_to @post, notice: '上传成功!'
-    respond_to do |format|
-      if
-        format.html { redirect_to @post, notice: '上传成功!' }
-        format.json { render json: PostSerializer.new(@post), status: :created }
-      else
-        format.html { render :index }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
+    result = QiniuService.new(fpath,filename).upload
+    if result[:success]
+      @post = Post.new
+      @post.filename = filename
+      @post.qiniu_hash = result[:data]['key']
+      respond_to do |format|
+        if @post.save
+          format.html { redirect_to @post, notice: '上传成功!' }
+          format.json { render json: PostSerializer.new(@post), status: :created }
+        else
+          format.html { render :index }
+          format.json { render json: @post.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
-
+  # def create
+  #   file = params[:file]
+  #   fpath, filename = file.path, file.original_filename
+  #   post = Post.find_by_filename(filename)
+  #   render json: { success: false, message: '此文件已存在！' } and return if post
+  #   @post = Post.new
+  #   @post.filename = filename
+  #   @post.qiniu_hash = 'FnxFlLV8a7hjZOB9a6RMX1xwuQFL'
+  #   redirect_to @post, notice: '上传成功!'
+  #   respond_to do |format|
+  #     if
+  #       format.html { redirect_to @post, notice: '上传成功!' }
+  #       format.json { render json: PostSerializer.new(@post), status: :created }
+  #     else
+  #       format.html { render :index }
+  #       format.json { render json: @post.errors, status: :unprocessable_entity }
+  #     end
+  #   end
+  # end
 
   def destroy
     set_post

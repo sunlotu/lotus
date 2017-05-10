@@ -13,8 +13,6 @@ module Lotus
 
     config.time_zone = 'Beijing'
 
-    config.i18n.default_locale = 'zh-CN'
-
     # -- all .rb files in that directory are automatically loaded.
     config.generators do |g|
       g.helper = false

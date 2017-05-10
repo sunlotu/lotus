@@ -4,3 +4,22 @@
 <div class="post-images">
 <%= render @posts %>
 </div>
+
+<div class="row col-md-12">
+  <%= form_tag api_posts_statistics_path, remote: true, method: :get, id: 'statistics-form' do %>
+    <%= submit_tag 'Posts', class: 'btn btn-primary' %>
+  <% end %>
+  <table class="table table-posts">
+    <thead>
+    <tr>
+      <th>标题</th>
+      <th>文件名</th>
+      <th>qiniu_hash</th>
+      <th>创建日期</th>
+    </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+</div>

@@ -33,6 +33,8 @@ gem 'puma', '~> 3.0'
 gem 'sidekiq'
 gem 'foreman'
 gem 'dotenv'
+
+gem 'detail_parser'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
