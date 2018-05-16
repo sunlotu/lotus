@@ -12,7 +12,7 @@ set :branch, :master
 set :deploy_to, "/var/www/#{fetch(:application)}"
 
 # Default value for :format is :airbrussh.
-# set :format, :airbrussh
+set :format, :pretty
 
 # You can configure the Airbrussh format using :format_options.
 # These are the defaults.
@@ -20,6 +20,7 @@ set :deploy_to, "/var/www/#{fetch(:application)}"
 
 # Default value for :pty is false
 set :pty, true
+set :use_sudo, true
 
 # Default value for :linked_files is []
 append :linked_files, "config/database.yml"
@@ -55,6 +56,6 @@ set :puma_error_log, "#{shared_path}/log/puma_access.log"
 set :puma_role, :app
 set :puma_env, fetch(:rack_env, fetch(:rails_env, 'production'))
 set :puma_threads, [0, 16]
-set :puma_workers, 1
+set :puma_workers, 0
 set :puma_init_active_record, false
 set :puma_preload_app, true #puma使用preload_app!
