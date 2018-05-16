@@ -3,13 +3,13 @@ lock "~> 3.10.2"
 
 set :application, "lotus"
 set :repo_url, "git@github.com:qdzrt/lotus.git"
-set :deploy_user, 'deploy'
+set :deploy_user, 'root'
 set :branch, :master
 # Default branch is :master
 # ask :branch, `git rev-parse --abbrev-ref HEAD`.chomp
 
 # Default deploy_to directory is /var/www/my_app_name
-set :deploy_to, "/home/deploy/#{fetch(:application)}"
+set :deploy_to, "/var/www/#{fetch(:application)}"
 
 # Default value for :format is :airbrussh.
 # set :format, :airbrussh
