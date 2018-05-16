@@ -27,7 +27,7 @@ gem 'redis-rails'
 
 # 云存储
 gem 'qiniu'
-gem 'active_model_serializers', github: 'rails-api/active_model_serializers'
+gem 'active_model_serializers'
 
 gem 'puma', '~> 3.0'
 gem 'sidekiq'
@@ -48,6 +48,12 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'pry-byebug'
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-rbenv'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-sidekiq'
 end
 
 group :development do
