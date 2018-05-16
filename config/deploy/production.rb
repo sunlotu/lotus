@@ -8,7 +8,7 @@
 # server "db.example.com", user: "deploy", roles: %w{db}
 
 set :stage, :production
-server 'sms.demo', user: fetch(:deploy_user), roles: %w{app db web}, ssh_options: { forward_agent: true }
+server '192.168.0.31', user: fetch(:deploy_user), roles: %w{app db web}, ssh_options: { forward_agent: true }
 set :rails_env, :production
 set :unicorn_worker_count, 5
 set :enable_ssl, false
