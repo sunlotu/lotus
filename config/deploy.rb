@@ -39,7 +39,6 @@ set :keep_releases, 5
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
-upload! "#{SECURE_DATA}database.yml", "#{release_path}/config/"
 
 set :nginx_server_name, "sms.demo"
 
